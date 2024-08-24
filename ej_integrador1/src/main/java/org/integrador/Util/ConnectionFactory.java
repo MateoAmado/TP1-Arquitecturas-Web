@@ -18,34 +18,30 @@ public class ConnectionFactory {
         return instance;
     }
 
-    public Connection connect(String tipo){
-		if(this.conn!=null) {
-			this.disconnect();
-		}
-		else {
-			if(tipo.equals(DERBY)) {
+	public Connection connect(String tipo) throws SQLException {
+		if (this.conn == null || this.conn.isClosed()) {
+			if (tipo.equals(DERBY)) {
 				try {
 					Class.forName("org.apache.derby.jdbc.EmbeddedDriver").getDeclaredConstructor().newInstance();
-					this.conn= DriverManager.getConnection("jdbc:derby:MyDerbyDB;create=true");
+					this.conn = DriverManager.getConnection("jdbc:derby:MyDerbyDB;create=true");
 				} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
-						| NoSuchMethodException | SecurityException | ClassNotFoundException | SQLException e) {
+						 | NoSuchMethodException | SecurityException | ClassNotFoundException | SQLException e) {
+					e.printStackTrace();
+				}
+			} else if (tipo.equals(MYSQL)) {
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+					this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/integrador1", "root", "");
+				} catch (SQLException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
 					e.printStackTrace();
 				}
 			}
-			if(tipo.equals(MYSQL)) {
-				try {
-					Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-					this.conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/integrador1", "root", "");
-				} catch (SQLException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 		}
-	}
-		return conn;
+		return this.conn;
 	}
 
-    public void disconnect() {
+
+	public void disconnect() {
         if(conn!=null) {
             try {
                 this.conn.close();

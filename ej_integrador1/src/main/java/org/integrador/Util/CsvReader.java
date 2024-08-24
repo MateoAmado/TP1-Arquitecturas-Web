@@ -74,7 +74,7 @@ public class CsvReader {
 
     public List<Cliente> readCsvClientes() {
         try {
-            Path filePath = Paths.get("src/main/resources/csv/facturas-productos.csv").normalize().toAbsolutePath();
+            Path filePath = Paths.get("src/main/resources/csv/clientes.csv").normalize().toAbsolutePath();
 
 
             try (Reader reader = Files.newBufferedReader(filePath);

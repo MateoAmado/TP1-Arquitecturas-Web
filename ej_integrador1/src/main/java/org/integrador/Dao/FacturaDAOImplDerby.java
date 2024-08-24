@@ -9,7 +9,15 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class FacturaDAOImplDerby implements FacturaDAO{
-    private static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+    private static Connection connection;
+
+    static {
+        try {
+            connection = ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public  void crear_tabla(){

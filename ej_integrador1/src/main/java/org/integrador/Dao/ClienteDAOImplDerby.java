@@ -9,7 +9,15 @@ import org.integrador.Modelo.Cliente;
 import org.integrador.Util.ConnectionFactory;
 
 public class ClienteDAOImplDerby implements ClienteDAO {
-    private static Connection connection= ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+    private static Connection connection;
+
+    static {
+        try {
+            connection = ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public void crear_tabla() {

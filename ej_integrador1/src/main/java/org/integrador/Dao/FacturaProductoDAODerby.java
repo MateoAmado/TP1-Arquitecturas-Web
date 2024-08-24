@@ -11,7 +11,16 @@ import java.util.List;
 
 public class FacturaProductoDAODerby implements FacturaProductoDAO{
 
-	private static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+	private static Connection connection;
+
+    static {
+        try {
+            connection = ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @Override
     public void crear_tabla() {
     		try {

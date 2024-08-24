@@ -32,18 +32,38 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
 		}
     }
 
+
     @Override
     public void insertar(Cliente cliente) {
-    	String sql = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
-        try (PreparedStatement stmt = this.connectionFactory.connect(connectionFactory.MYSQL).prepareStatement(sql)) {
-            stmt.setInt(1, cliente.getIdCliente());
-            stmt.setString(2, cliente.getNombre());
-            stmt.setString(3, cliente.getEmail());
-            stmt.executeUpdate();
+        if (cliente == null) {
+            throw new IllegalArgumentException("El cliente no puede ser null");
+        }
+
+        String sql = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
+        Connection conn = null;
+        try {
+            conn = this.connectionFactory.connect(connectionFactory.MYSQL);
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setInt(1, cliente.getIdCliente());
+                stmt.setString(2, cliente.getNombre());
+                stmt.setString(3, cliente.getEmail());
+                stmt.executeUpdate();
+            }
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.err.println("Error al insertar el cliente: " + e.getMessage());
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    System.err.println("Error al cerrar la conexión: " + e.getMessage());
+                }
+            }
         }
     }
+
+
+
 
     @Override
     public void actualizar(Cliente cliente) {
