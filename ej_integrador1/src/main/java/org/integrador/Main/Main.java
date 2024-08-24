@@ -12,5 +12,7 @@ public class Main {
         dao_factory.getClienteDAO(ConnectionFactory.DERBY).crear_tabla();
         Cliente jugador = dao_factory.getClienteDAO(ConnectionFactory.DERBY).buscar_por_nombre("Nelson");
         System.out.println(jugador.toString());
+
+
     }
 }
