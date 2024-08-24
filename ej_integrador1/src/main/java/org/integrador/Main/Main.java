@@ -8,9 +8,9 @@ public class Main {
     public static void main(String[] args) {
         CsvReader lectorcsv=new CsvReader();
         lectorcsv.readCsvProductos();
-     /*   DAOFactory dao_factory = DAOFactory.getInstance();
+        DAOFactory dao_factory = DAOFactory.getInstance();
         dao_factory.getClienteDAO(ConnectionFactory.DERBY).crear_tabla();
         Cliente jugador = dao_factory.getClienteDAO(ConnectionFactory.DERBY).buscar_por_nombre("Nelson");
         System.out.println(jugador.toString());
-    */}
+    }
 }
