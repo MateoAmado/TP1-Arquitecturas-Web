@@ -27,9 +27,9 @@ public class ClienteDAOImplDerby implements ClienteDAO {
     public void insertar(Cliente cliente) {
         String sql = " INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
         try(PreparedStatement stmt = this.connection.prepareStatement(sql)){
-            stmt.setInt(1, cliente.getIdCliente();
-            stmt.setInt(2, cliente.getNombre();
-            stmt.setInt(3, cliente.getEmail();
+            stmt.setInt(1, cliente.getIdCliente());
+            stmt.setString(2, cliente.getNombre());
+            stmt.setString(3, cliente.getEmail());
         }
         catch(SQLException e){
             e.printStackTrace();

@@ -35,7 +35,7 @@ public class ConnectionFactory {
 			if(tipo.equals(MYSQL)) {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
-					this.conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/exampleDB", "root", "password"); 
+					this.conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/integrador1", "root", "");
 				} catch (SQLException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
