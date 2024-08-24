@@ -1,4 +1,5 @@
 package org.integrador.Dao;
+import org.integrador.Util.*;
 
 public class DAOFactory {
     private static DAOFactory instance = new DAOFactory();
