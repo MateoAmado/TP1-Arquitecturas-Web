@@ -26,12 +26,12 @@ public class FacturaProductoDAODerby implements FacturaProductoDAO{
 
 
     @Override
-    public void insertar(Factura_producto cliente) {
+    public void insertar(Factura_producto facturaProducto) {
         	String sql = "INSERT INTO factura_producto (idFactura, idProducto, cantidad) VALUES (?,?,?)";
         	   try(PreparedStatement stmt = this.connection.prepareStatement(sql)){
-        	          stmt.setInt(1, cliente.getIdFactura());
-        	          stmt.setInt(2, cliente.getIdProducto());
-        	          stmt.setInt(3, cliente.getCantidad());
+        	          stmt.setInt(1, facturaProducto.getIdFactura());
+        	          stmt.setInt(2, facturaProducto.getIdProducto());
+        	          stmt.setInt(3, facturaProducto.getCantidad());
         	}
         	   catch(SQLException e){
         	          e.printStackTrace();
@@ -39,12 +39,12 @@ public class FacturaProductoDAODerby implements FacturaProductoDAO{
     }
 
     @Override
-    public void actualizar(Factura_producto cliente) {
+    public void actualizar(Factura_producto facturaProducto) {
 
     }
 
     @Override
-    public void eliminar(Factura_producto cliente) {
+    public void eliminar(Factura_producto facturaProducto) {
 
     }
 

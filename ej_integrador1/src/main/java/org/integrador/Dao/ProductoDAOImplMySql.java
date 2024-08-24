@@ -39,12 +39,12 @@ public class ProductoDAOImplMySql implements ProductoDAO{
 
 
     @Override
-    public void actualizar(Producto cliente) {
+    public void actualizar(Producto producto) {
 
     }
 
     @Override
-    public void eliminar(Producto cliente) {
+    public void eliminar(Producto producto) {
 
     }
 

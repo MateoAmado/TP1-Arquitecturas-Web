@@ -36,12 +36,12 @@ public class FacturaDAOImplDerby implements FacturaDAO{
     }
 
     @Override
-    public void actualizar(Factura cliente) {
+    public void actualizar(Factura factura) {
 
     }
 
     @Override
-    public void eliminar(Factura cliente) {
+    public void eliminar(Factura factura) {
 
     }
 

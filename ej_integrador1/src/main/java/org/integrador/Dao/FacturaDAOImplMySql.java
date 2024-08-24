@@ -12,17 +12,17 @@ public class FacturaDAOImplMySql implements FacturaDAO{
     }
 
     @Override
-    public void insertar(Factura cliente) {
+    public void insertar(Factura factura) {
 
     }
 
     @Override
-    public void actualizar(Factura cliente) {
+    public void actualizar(Factura factura) {
 
     }
 
     @Override
-    public void eliminar(Factura cliente) {
+    public void eliminar(Factura factura) {
 
     }
 
