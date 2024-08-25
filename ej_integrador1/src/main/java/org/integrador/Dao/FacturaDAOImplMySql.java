@@ -13,7 +13,7 @@ public class FacturaDAOImplMySql implements FacturaDAO{
 
     static {
         try {
-            connection = ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+            connection = ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -22,7 +22,7 @@ public class FacturaDAOImplMySql implements FacturaDAO{
     @Override
     public  void crear_tabla(){
         try {
-            String table= "CREATE TABLE Factura (idFactura INT, idCliente INT, PRIMARY KEY (idFactura), FOREIGN KEY(cliente_idCliente) REFERENCES cliente (idCliente))";
+            String table= "CREATE TABLE Factura (idFactura INT, idCliente INT, PRIMARY KEY (idFactura), FOREIGN KEY(idCliente) REFERENCES cliente (idCliente))";
             connection.prepareStatement(table).execute();
             connection.commit();
             ConnectionFactory.instance().disconnect();
@@ -34,8 +34,8 @@ public class FacturaDAOImplMySql implements FacturaDAO{
     @Override
     public void insertar(Factura factura) {
 
-        try(PreparedStatement stmt = this.connection.prepareStatement("INSERT INTO factura (idFactura, cliente_idCliente) VALUES (?,?)")){
-            String sql = "INSERT INTO factura_producto (idFactura, cliente_idCliente) VALUES (?,?)";
+        try(PreparedStatement stmt = this.connection.prepareStatement("INSERT INTO factura (idFactura, idCliente) VALUES (?,?)")){
+            String sql = "INSERT INTO factura_producto (idFactura, idCliente) VALUES (?,?)";
             stmt.setInt(1, factura.getIdFactura());
             stmt.setInt(2, factura.getIdCliente());
             stmt.executeUpdate();

@@ -78,13 +78,10 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
     public ArrayList<Cliente> clientes_por_facturacion() {
     	ArrayList<Cliente> clientes = new ArrayList();
     	try {
-    		String sql = "SELECT c.idCliente, c.nombre, SUM(p.valor * fp.cantidad) AS total_facturado " +
-                    "FROM cliente c " +
-                    "JOIN factura f ON c.idCliente = f.cliente_idCliente " +
-                    "JOIN factura_producto fp ON f.idFactura = fp.factura_idFactura " +
-                    "JOIN producto p ON fp.producto_idProducto = p.idProducto " +
-                    "GROUP BY c.idCliente, c.nombre " +
-                    "ORDER BY total_facturado DESC";
+    		String sql = "SELECT c.idCliente, c.nombre, c.email, SUM(p.valor * fp.cantidad) AS total_facturado"
+    				+ " FROM cliente c JOIN factura f ON c.idCliente = f.idCliente JOIN factura_producto fp "
+    				+ "ON f.idFactura = fp.idFactura JOIN producto p ON fp.idProducto = p.idProducto"
+    				+ " GROUP BY c.idCliente, c.nombre, c.email ORDER BY total_facturado DESC;";
     		
     		PreparedStatement stmt = this.connectionFactory.connect(connectionFactory.MYSQL).prepareStatement(sql);
     		ResultSet rs = stmt.executeQuery();

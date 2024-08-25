@@ -22,7 +22,7 @@ public class FacturaProductoDAOMySql implements FacturaProductoDAO {
     @Override
     public void crear_tabla() {
     	try {
-			String table= "CREATE TABLE Factura (idFactura INT, idCliente INT, PRIMARY KEY (idFactura), FOREIGN KEY(cliente_idCliente) REFERENCES cliente (idCliente))";
+			String table= "CREATE TABLE Factura (idFactura INT, idCliente INT, PRIMARY KEY (idFactura), FOREIGN KEY(idCliente) REFERENCES cliente (idCliente))";
 			connection.prepareStatement(table).execute();
 			connection.commit();
 			ConnectionFactory.instance().disconnect();
@@ -33,7 +33,7 @@ public class FacturaProductoDAOMySql implements FacturaProductoDAO {
 
     @Override
     public void insertar(Factura_producto facturaProducto) {
-    	String sql = "INSERT INTO factura_producto (factura_idFactura, producto_idProducto, cantidad) VALUES (?,?,?)";
+    	String sql = "INSERT INTO factura_producto (idFactura, idProducto, cantidad) VALUES (?,?,?)";
     	   try(PreparedStatement stmt = this.connection.prepareStatement(sql)){
     	          stmt.setInt(1, facturaProducto.getIdFactura());
     	          stmt.setInt(2, facturaProducto.getIdProducto());

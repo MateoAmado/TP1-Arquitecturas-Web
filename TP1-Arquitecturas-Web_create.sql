@@ -1,5 +1,5 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2024-08-24 18:46:55.448
+-- Last modification date: 2024-08-24 22:07:08.041
 
 -- tables
 -- Table: cliente
@@ -13,16 +13,16 @@ CREATE TABLE cliente (
 -- Table: factura
 CREATE TABLE factura (
     idFactura int  NOT NULL,
-    cliente_idCliente int  NOT NULL,
+    idCliente int  NOT NULL,
     CONSTRAINT factura_pk PRIMARY KEY (idFactura)
 );
 
 -- Table: factura_producto
 CREATE TABLE factura_producto (
-    factura_idFactura int  NOT NULL,
-    producto_idProducto int  NOT NULL,
+    idFactura int  NOT NULL,
+    idProducto int  NOT NULL,
     cantidad int  NOT NULL,
-    CONSTRAINT factura_producto_pk PRIMARY KEY (factura_idFactura,producto_idProducto)
+    CONSTRAINT factura_producto_pk PRIMARY KEY (idFactura,idProducto)
 );
 
 -- Table: producto
@@ -35,15 +35,15 @@ CREATE TABLE producto (
 
 -- foreign keys
 -- Reference: factura_cliente (table: factura)
-ALTER TABLE factura ADD CONSTRAINT factura_cliente FOREIGN KEY factura_cliente (cliente_idCliente)
+ALTER TABLE factura ADD CONSTRAINT factura_cliente FOREIGN KEY factura_cliente (idCliente)
     REFERENCES cliente (idCliente);
 
 -- Reference: factura_producto_factura (table: factura_producto)
-ALTER TABLE factura_producto ADD CONSTRAINT factura_producto_factura FOREIGN KEY factura_producto_factura (factura_idFactura)
+ALTER TABLE factura_producto ADD CONSTRAINT factura_producto_factura FOREIGN KEY factura_producto_factura (idFactura)
     REFERENCES factura (idFactura);
 
 -- Reference: factura_producto_producto (table: factura_producto)
-ALTER TABLE factura_producto ADD CONSTRAINT factura_producto_producto FOREIGN KEY factura_producto_producto (producto_idProducto)
+ALTER TABLE factura_producto ADD CONSTRAINT factura_producto_producto FOREIGN KEY factura_producto_producto (idProducto)
     REFERENCES producto (idProducto);
 
 -- End of file.
