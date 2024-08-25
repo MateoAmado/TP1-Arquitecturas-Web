@@ -37,5 +37,10 @@ public class Cliente {
 		this.email = email;
 	}
 	
+	public String ToString() {
+		return "Nombre: "+this.getNombre()+"\n"+"Email: "+this.getEmail()+"\n"+"IdCLiente: "+this.getIdCliente()+"\n";
+		
+	}
+	
 	
 }

@@ -13,19 +13,16 @@ import java.util.List;
 
 public class ClienteDAOImplMySQL implements ClienteDAO {
 
-	private ConnectionFactory connectionFactory;
+	public static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
 	
-	public ClienteDAOImplMySQL() {
-		this.connectionFactory = ConnectionFactory.instance();
-	}
 	
 	
     @Override
     public void crear_tabla() {
     	try {
 			String table= "CREATE TABLE cliente (idCliente int, nombre varchar(500), email varchar(150), PRIMARY KEY(idCliente))";
-			connectionFactory.connect(connectionFactory.MYSQL).prepareStatement(table).execute();
-			connectionFactory.connect(connectionFactory.MYSQL).commit();
+			connection.prepareStatement(table).execute();
+			connection.commit();
 			ConnectionFactory.instance().disconnect();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -35,30 +32,21 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
 
     @Override
     public void insertar(Cliente cliente) {
-        if (cliente == null) {
+    	if (cliente == null) {
             throw new IllegalArgumentException("El cliente no puede ser null");
         }
 
-        String sql = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
-        Connection conn = null;
-        try {
-            conn = this.connectionFactory.connect(connectionFactory.MYSQL);
-            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            try {
+            	String sql = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
+            	PreparedStatement stmt = connection.prepareStatement(sql);
                 stmt.setInt(1, cliente.getIdCliente());
                 stmt.setString(2, cliente.getNombre());
                 stmt.setString(3, cliente.getEmail());
                 stmt.executeUpdate();
-            }
+                connection.commit();
+                //ConnectionFactory.instance().disconnect();
         } catch (SQLException e) {
             System.err.println("Error al insertar el cliente: " + e.getMessage());
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                    System.err.println("Error al cerrar la conexión: " + e.getMessage());
-                }
-            }
         }
     }
 
@@ -83,7 +71,7 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
     				+ "ON f.idFactura = fp.idFactura JOIN producto p ON fp.idProducto = p.idProducto"
     				+ " GROUP BY c.idCliente, c.nombre, c.email ORDER BY total_facturado DESC;";
     		
-    		PreparedStatement stmt = this.connectionFactory.connect(connectionFactory.MYSQL).prepareStatement(sql);
+    		PreparedStatement stmt = connection.prepareStatement(sql);
     		ResultSet rs = stmt.executeQuery();
     		while(rs.next()) {
     			int idCliente = rs.getInt("idCliente");
@@ -104,8 +92,4 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
         return null;
     }
 
-    @Override
-    public List<Cliente> listar() {
-        return List.of();
-    }
 }

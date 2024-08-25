@@ -9,20 +9,21 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class FacturaProductoDAOMySql implements FacturaProductoDAO {
-	public static Connection connection;
+	
+	public static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
 
-    static {
-        try {
-            connection = ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @Override
     public void crear_tabla() {
     	try {
-			String table= "CREATE TABLE Factura (idFactura INT, idCliente INT, PRIMARY KEY (idFactura), FOREIGN KEY(idCliente) REFERENCES cliente (idCliente))";
+    		String table = "CREATE TABLE factura_producto ("
+    		           + "idFactura INT, "
+    		           + "idProducto INT, "
+    		           + "cantidad INT, "
+    		           + "PRIMARY KEY (idFactura, idProducto), "
+    		           + "FOREIGN KEY (idProducto) REFERENCES producto(idProducto), "
+    		           + "FOREIGN KEY (idFactura) REFERENCES factura(IdFactura)"
+    		           + ");";
 			connection.prepareStatement(table).execute();
 			connection.commit();
 			ConnectionFactory.instance().disconnect();
@@ -33,12 +34,14 @@ public class FacturaProductoDAOMySql implements FacturaProductoDAO {
 
     @Override
     public void insertar(Factura_producto facturaProducto) {
-    	String sql = "INSERT INTO factura_producto (idFactura, idProducto, cantidad) VALUES (?,?,?)";
-    	   try(PreparedStatement stmt = this.connection.prepareStatement(sql)){
+    	   try{
+    		   String sql = "INSERT INTO factura_producto (idFactura, idProducto, cantidad) VALUES (?,?,?)";
+    		   PreparedStatement stmt = this.connection.prepareStatement(sql);
     	          stmt.setInt(1, facturaProducto.getIdFactura());
     	          stmt.setInt(2, facturaProducto.getIdProducto());
     	          stmt.setInt(3, facturaProducto.getCantidad());
-                  stmt.executeUpdate();
+    	          stmt.executeUpdate();
+    	          connection.commit();
     	}
     	   catch(SQLException e){
     	          e.printStackTrace();

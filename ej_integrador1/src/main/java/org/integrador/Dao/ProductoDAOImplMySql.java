@@ -9,15 +9,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ProductoDAOImplMySql implements ProductoDAO{
-	private static Connection connection;
 
-    static {
-        try {
-            connection = ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+	public static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
 
     @Override
     public void crear_tabla() {
@@ -33,12 +26,14 @@ public class ProductoDAOImplMySql implements ProductoDAO{
 
     @Override
     public void insertar(Producto producto) {
-    	String sql = "INSERT INTO producto (idProducto, nombre, valor) VALUES (?,?,?)";
-    	   try(PreparedStatement stmt = this.connection.prepareStatement(sql)){
+    	   try{
+    		   String sql = "INSERT INTO producto (idProducto, nombre, valor) VALUES (?,?,?)";
+    		   PreparedStatement stmt = this.connection.prepareStatement(sql);
     	          stmt.setInt(1, producto.getIdProducto());
     	          stmt.setString(2, producto.getNombre());
     	          stmt.setFloat(3, producto.getValor());
-               stmt.executeUpdate();
+    	          stmt.executeUpdate();
+    	          connection.commit();
     	}
     	   catch(SQLException e){
     	          e.printStackTrace();

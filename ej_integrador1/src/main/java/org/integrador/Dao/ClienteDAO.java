@@ -2,6 +2,7 @@ package org.integrador.Dao;
 
 import org.integrador.Modelo.Cliente;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ClienteDAO {
@@ -15,6 +16,6 @@ public interface ClienteDAO {
 
     public Cliente buscar_por_nombre(String nombre);
 
-    public List<Cliente> listar();
+    public ArrayList<Cliente> clientes_por_facturacion();
 
 }

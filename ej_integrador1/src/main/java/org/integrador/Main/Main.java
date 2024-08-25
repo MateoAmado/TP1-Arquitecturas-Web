@@ -13,49 +13,72 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         CsvReader lectorcsv=new CsvReader();
-        /*
        lectorcsv.readCsvProductos();
        
-        DAOFactory dao_factory = DAOFactory.getInstance();
-        dao_factory.getClienteDAO(ConnectionFactory.DERBY).crear_tabla();
-        Cliente jugador = dao_factory.getClienteDAO(ConnectionFactory.DERBY).buscar_por_nombre("Nelson");
-        System.out.println(jugador.toString());
-        */
-        /*
-        ClienteDAOImplMySQL mysqlCliente = new ClienteDAOImplMySQL();
-       List<Cliente> clientes=lectorcsv.readCsvClientes();
-
-        System.out.println(clientes.size());
-        for(Cliente cliente:clientes){
-           mysqlCliente.insertar(cliente);
-        }
+       /*
+       DAOFactory dao_factory = DAOFactory.getInstance();
+       ClienteDAO mysqlCliente =dao_factory.getClienteDAO(ConnectionFactory.MYSQL);
+       //dao_factory.getClienteDAO(ConnectionFactory.MYSQL).crear_tabla();
+        List<Cliente> clientes=lectorcsv.readCsvClientes();
+        	System.out.println(clientes.size());
         
-          FacturaDAOImplMySql mysqlFactura=new FacturaDAOImplMySql();
+	        for(Cliente cliente:clientes){
+	           mysqlCliente.insertar(cliente);
+	        }
+        */
+        
+        /*
+       ArrayList<Cliente> clientes=mysqlCliente.clientes_por_facturacion();
+       for(Cliente cliente:clientes){
+           System.out.println(cliente.ToString());
+        }
+	     */
+        
+        
+       
+       
+       /*
+       DAOFactory dao_factory = DAOFactory.getInstance();
+       //dao_factory.getFacturaDAO(ConnectionFactory.MYSQL).crear_tabla();
+        
+       FacturaDAO mysqlFactura=DAOFactory.getInstance().getFacturaDAO(ConnectionFactory.MYSQL);
 
         List<Factura> facturas=lectorcsv.readCsvFacturas();
         System.out.println(facturas.size());
+        
         for(Factura factura:facturas){
             mysqlFactura.insertar(factura);
         }
         
-
-        ProductoDAOImplMySql ProdDao=new ProductoDAOImplMySql();
+        */
+        
+       /*
+       DAOFactory dao_factory = DAOFactory.getInstance();
+       //dao_factory.getProductoDAO(ConnectionFactory.MYSQL).crear_tabla();
+        
+       ProductoDAO mysqlProducto=DAOFactory.getInstance().getProductoDAO(ConnectionFactory.MYSQL); 
+       
         List<Producto> productos=lectorcsv.readCsvProductos();
+        
+        System.out.println(productos.size());
         for(Producto prod:productos){
-            ProdDao.insertar(prod);
+        	mysqlProducto.insertar(prod);
         }
 
-
-     //   ClienteDAOImplMySQL mysqlCliente=new ClienteDAOImplMySQL();
+		*/
+		
+      /*
+      DAOFactory dao_factory = DAOFactory.getInstance();
+       //dao_factory.getFacturaProductoDAO(ConnectionFactory.MYSQL).crear_tabla();
+        
+       FacturaProductoDAO mysqlProducto=dao_factory.getFacturaProductoDAO(ConnectionFactory.MYSQL); 
         
         FacturaProductoDAOMySql fpd=new FacturaProductoDAOMySql();
         List<Factura_producto> fp=lectorcsv.readCsvFacturasProductos();
+        System.out.println(fp.size());
         for(Factura_producto fp1:fp){
             fpd.insertar(fp1);
         }
         */
-       // ProductoDAOImplMySql pdf=new ProductoDAOImplMySql();
-
-
     }
 }
