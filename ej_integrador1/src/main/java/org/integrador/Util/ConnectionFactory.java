@@ -11,11 +11,8 @@ public class ConnectionFactory {
 
     public static ConnectionFactory instance= new ConnectionFactory();
     private Connection conn;
-    public boolean conexion;
 
-    private ConnectionFactory() {
-    	this.conexion=false;
-    }
+    private ConnectionFactory() {}
 
     public static ConnectionFactory instance() {
         return instance;
@@ -30,7 +27,7 @@ public class ConnectionFactory {
 				try {
 					Class.forName("org.apache.derby.jdbc.EmbeddedDriver").getDeclaredConstructor().newInstance();
 					this.conn = DriverManager.getConnection("jdbc:derby:MyDerbyDB;create=true");
-					this.conexion=true;
+					
 				} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 						 | NoSuchMethodException | SecurityException | ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
@@ -41,7 +38,6 @@ public class ConnectionFactory {
 					Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
 					this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/integrador1", "root", "password");
 					conn.setAutoCommit(false);
-					this.conexion=true;
 				} catch (SQLException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -56,7 +52,6 @@ public class ConnectionFactory {
         if(conn!=null) {
             try {
                 this.conn.close();
-                this.conexion=false;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
