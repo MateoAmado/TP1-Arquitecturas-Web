@@ -76,11 +76,11 @@ public class Main {
         
         List<Factura_producto> fp=lectorcsv.readCsvFacturasProductos();
         
-        Factura_producto producto=mysqlProducto.producto_que_mas_recaudo();
-        System.out.println(producto.toString());
-        /*for(Factura_producto fp1:fp){
-            fpd.insertar(fp1);
-        }*/
+        //Factura_producto producto=mysqlProducto.producto_que_mas_recaudo();
+        //System.out.println(producto.toString());
+        for(Factura_producto fp1:fp){
+            mysqlProducto.insertar(fp1);
+        }
         
     }
 }

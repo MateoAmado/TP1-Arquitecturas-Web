@@ -19,10 +19,6 @@ public class ConnectionFactory {
     }
 
 	public Connection connect(String tipo) {
-		if (this.conn != null){
-			this.disconnect();
-		}
-		else {
 			if (tipo.equals(DERBY)) {
 				try {
 					Class.forName("org.apache.derby.jdbc.EmbeddedDriver").getDeclaredConstructor().newInstance();
@@ -43,7 +39,6 @@ public class ConnectionFactory {
 					e.printStackTrace();
 				}
 			}
-		}
 		return this.conn;
 	}
 

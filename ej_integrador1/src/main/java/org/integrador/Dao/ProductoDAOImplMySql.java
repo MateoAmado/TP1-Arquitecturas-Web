@@ -27,6 +27,7 @@ public class ProductoDAOImplMySql implements ProductoDAO{
     @Override
     public void insertar(Producto producto) {
     	   try{
+    		   connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
     		   String sql = "INSERT INTO producto (idProducto, nombre, valor) VALUES (?,?,?)";
     		   PreparedStatement stmt = this.connection.prepareStatement(sql);
     	          stmt.setInt(1, producto.getIdProducto());
@@ -34,6 +35,7 @@ public class ProductoDAOImplMySql implements ProductoDAO{
     	          stmt.setFloat(3, producto.getValor());
     	          stmt.executeUpdate();
     	          connection.commit();
+    	          ConnectionFactory.instance().disconnect();
     	}
     	   catch(SQLException e){
     	          e.printStackTrace();

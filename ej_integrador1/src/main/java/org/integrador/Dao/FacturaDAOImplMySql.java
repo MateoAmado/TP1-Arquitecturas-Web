@@ -28,13 +28,14 @@ public class FacturaDAOImplMySql implements FacturaDAO{
     public void insertar(Factura factura) {
 
         try{
+        	connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
             String sql = "INSERT INTO factura (idFactura, idCliente) VALUES (?,?)";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setInt(1, factura.getIdFactura());
             stmt.setInt(2, factura.getIdCliente());
             stmt.executeUpdate();
             connection.commit();
-            //ConnectionFactory.instance().disconnect();
+            ConnectionFactory.instance().disconnect();
         }
         catch(SQLException e){
             e.printStackTrace();

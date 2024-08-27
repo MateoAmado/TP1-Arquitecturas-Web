@@ -37,6 +37,7 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
         }
 
             try {
+            	//connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
             	String sql = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
             	PreparedStatement stmt = connection.prepareStatement(sql);
                 stmt.setInt(1, cliente.getIdCliente());
@@ -44,7 +45,7 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
                 stmt.setString(3, cliente.getEmail());
                 stmt.executeUpdate();
                 connection.commit();
-                //ConnectionFactory.instance().disconnect();
+                ConnectionFactory.instance().disconnect();
         } catch (SQLException e) {
             System.err.println("Error al insertar el cliente: " + e.getMessage());
         }
