@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b46de2a-9132-411a-8e7a-1bc3c41400a6" name="Changes" comment="Daos">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/ClienteDAOImplDerby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/ClienteDAOImplDerby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/ClienteDAOImplMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/ClienteDAOImplMySQL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaDAOImplDerby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaDAOImplDerby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaDAOImplMySql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaDAOImplMySql.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaProductoDAODerby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaProductoDAODerby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaProductoDAOMySql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaProductoDAOMySql.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/ProductoDAOImplDerby.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/ProductoDAOImplDerby.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/ProductoDAOImplMySql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/ProductoDAOImplMySql.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Util/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Util/ConnectionFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Util/CsvReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Util/CsvReader.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Gonzalohellers"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MateoAmado/TP1-Arquitecturas-Web",
+    "accountId": "7cd8a27d-9670-4078-ba68-0ca29763d27f"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -43,22 +46,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/tudai/Arquitecturas Web/TP1-Arquitecturas-Web/TP1-Arquitecturas-Web/ej_integrador1&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/gonzah/IntelliJProjects/TP1-Arquitecturas-Web/ej_integrador1/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.integrador.Dao" />
@@ -76,8 +79,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.387" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.387" />
       </set>
     </attachedChunks>
   </component>
@@ -92,6 +95,7 @@
       <workItem from="1724525766328" duration="1598000" />
       <workItem from="1724527385972" duration="5246000" />
       <workItem from="1724532706667" duration="4855000" />
+      <workItem from="1724888752647" duration="674000" />
     </task>
     <task id="LOCAL-00001" summary="Daos">
       <option name="closed" value="true" />
