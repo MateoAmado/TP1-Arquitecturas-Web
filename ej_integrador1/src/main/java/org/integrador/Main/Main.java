@@ -13,49 +13,75 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         CsvReader lectorcsv=new CsvReader();
-        /*
        lectorcsv.readCsvProductos();
        
-        DAOFactory dao_factory = DAOFactory.getInstance();
-        dao_factory.getClienteDAO(ConnectionFactory.DERBY).crear_tabla();
-        Cliente jugador = dao_factory.getClienteDAO(ConnectionFactory.DERBY).buscar_por_nombre("Nelson");
-        System.out.println(jugador.toString());
-        */
-        /*
-        ClienteDAOImplMySQL mysqlCliente = new ClienteDAOImplMySQL();
-       List<Cliente> clientes=lectorcsv.readCsvClientes();
-
-        System.out.println(clientes.size());
-        for(Cliente cliente:clientes){
-           mysqlCliente.insertar(cliente);
-        }
+       
+       DAOFactory dao_factory = DAOFactory.getInstance();
+       ClienteDAO mysqlCliente =dao_factory.getClienteDAO(ConnectionFactory.MYSQL);
+       /*
+       //dao_factory.getClienteDAO(ConnectionFactory.MYSQL).crear_tabla();
+        List<Cliente> clientes=lectorcsv.readCsvClientes();
+        	System.out.println(clientes.size());
+	        for(Cliente cliente:clientes){
+	           mysqlCliente.insertar(cliente);
+	        }
         
-          FacturaDAOImplMySql mysqlFactura=new FacturaDAOImplMySql();
-
+     
+       //dao_factory.getFacturaDAO(ConnectionFactory.MYSQL).crear_tabla();
+        
+       FacturaDAO mysqlFactura=DAOFactory.getInstance().getFacturaDAO(ConnectionFactory.MYSQL);
         List<Factura> facturas=lectorcsv.readCsvFacturas();
         System.out.println(facturas.size());
         for(Factura factura:facturas){
             mysqlFactura.insertar(factura);
         }
         
-
-        ProductoDAOImplMySql ProdDao=new ProductoDAOImplMySql();
-        List<Producto> productos=lectorcsv.readCsvProductos();
-        for(Producto prod:productos){
-            ProdDao.insertar(prod);
+      
+        ProductoDAO mysqlProducto = dao_factory.getProductoDAO(ConnectionFactory.MYSQL);
+        List<Producto> productos = lectorcsv.readCsvProductos();
+        for(Producto p:productos) {
+        	mysqlProducto.insertar(p);
         }
-
-
-     //   ClienteDAOImplMySQL mysqlCliente=new ClienteDAOImplMySQL();
+        System.out.println("asd");
+      
+       //dao_factory.getFacturaProductoDAO(ConnectionFactory.MYSQL).crear_tabla();
         
-        FacturaProductoDAOMySql fpd=new FacturaProductoDAOMySql();
+       FacturaProductoDAO mysqlProductoFactura=dao_factory.getFacturaProductoDAO(ConnectionFactory.MYSQL); 
+        
+        
         List<Factura_producto> fp=lectorcsv.readCsvFacturasProductos();
+        //Factura_producto producto=mysqlProducto.producto_que_mas_recaudo();
+        System.out.println("hola");
         for(Factura_producto fp1:fp){
-            fpd.insertar(fp1);
+            mysqlProductoFactura.insertar(fp1);
         }
         */
-       // ProductoDAOImplMySql pdf=new ProductoDAOImplMySql();
-
-
+        
+        System.out.print("Clientes por facturacion");
+       List<Cliente> clientes_f=mysqlCliente.clientes_por_facturacion();
+       for(Cliente cliente:clientes_f){
+           System.out.println(cliente.ToString());
+        }
+       
+       
+      ClienteDAO clienteDerby = dao_factory.getClienteDAO(ConnectionFactory.DERBY);
+       dao_factory.getClienteDAO(ConnectionFactory.DERBY).crear_tabla();
+       
+       System.out.println("clienteDerby:");
+       List<Cliente> clentes = lectorcsv.readCsvClientes();
+       for(Cliente cliente:clentes) {
+    	   clienteDerby.insertar(cliente);
+       }
+       
+       FacturaDAO facturaDerby = dao_factory.getFacturaDAO(ConnectionFactory.DERBY);
+       dao_factory.getFacturaDAO(ConnectionFactory.DERBY).crear_tabla();
+       
+       List<Factura> facturas = lectorcsv.readCsvFacturas();
+       for(Factura factura:facturas) {
+    	   facturaDerby.insertar(factura);
+       }
+	     
+        
+        
     }
 }

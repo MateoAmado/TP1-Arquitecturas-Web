@@ -23,35 +23,35 @@ public class DAOFactory {
 
     }
 
-    public ClienteDAO getFacturaDAO(String type) {
+    public FacturaDAO getFacturaDAO(String type) {
         if (type.equals(ConnectionFactory.MYSQL)) {
-            return new ClienteDAOImplMySQL();
+            return new FacturaDAOImplMySql();
         }
         if (type.equals(ConnectionFactory.DERBY)) {
-            return new ClienteDAOImplDerby();
+            return new FacturaDAOImplDerby();
         }
 
         throw new IllegalArgumentException("Tipo de DAO no válido: " + type);
 
     }
 
-    public ClienteDAO getFacturaProductoDAO(String type) {
+    public FacturaProductoDAO getFacturaProductoDAO(String type) {
         if (type.equals(ConnectionFactory.MYSQL)) {
-            return new ClienteDAOImplMySQL();
+            return new FacturaProductoDAOMySql();
         }
         if (type.equals(ConnectionFactory.DERBY)) {
-            return new ClienteDAOImplDerby();
+            return new FacturaProductoDAODerby();
         }
 
         throw new IllegalArgumentException("Tipo de DAO no válido: " + type);
     }
 
-    public ClienteDAO getProductoDAO(String type) {
+    public ProductoDAO getProductoDAO(String type) {
         if (type.equals(ConnectionFactory.MYSQL)) {
-            return new ClienteDAOImplMySQL();
+            return new ProductoDAOImplMySql();
         }
         if (type.equals(ConnectionFactory.DERBY)) {
-            return new ClienteDAOImplDerby();
+            return new ProductoDAOImplMySql();
         }
 
         throw new IllegalArgumentException("Tipo de DAO no válido: " + type);

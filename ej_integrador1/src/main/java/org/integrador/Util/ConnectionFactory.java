@@ -18,25 +18,27 @@ public class ConnectionFactory {
         return instance;
     }
 
-	public Connection connect(String tipo) throws SQLException {
-		if (this.conn == null || this.conn.isClosed()) {
+	public Connection connect(String tipo) {
 			if (tipo.equals(DERBY)) {
 				try {
 					Class.forName("org.apache.derby.jdbc.EmbeddedDriver").getDeclaredConstructor().newInstance();
 					this.conn = DriverManager.getConnection("jdbc:derby:MyDerbyDB;create=true");
+					
 				} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 						 | NoSuchMethodException | SecurityException | ClassNotFoundException | SQLException e) {
 					e.printStackTrace();
 				}
-			} else if (tipo.equals(MYSQL)) {
+			}
+			if (tipo.equals(MYSQL)) {
 				try {
 					Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
 					this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/integrador1", "root", "");
+					conn.setAutoCommit(false);
 				} catch (SQLException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException | SecurityException | ClassNotFoundException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-		}
 		return this.conn;
 	}
 

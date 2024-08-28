@@ -9,15 +9,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class FacturaDAOImplMySql implements FacturaDAO{
-    private static Connection connection;
 
-    static {
-        try {
-            connection = ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    public static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
 
     @Override
     public  void crear_tabla(){
@@ -34,11 +27,15 @@ public class FacturaDAOImplMySql implements FacturaDAO{
     @Override
     public void insertar(Factura factura) {
 
-        try(PreparedStatement stmt = this.connection.prepareStatement("INSERT INTO factura (idFactura, idCliente) VALUES (?,?)")){
-            String sql = "INSERT INTO factura_producto (idFactura, idCliente) VALUES (?,?)";
+        try{
+        	connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+            String sql = "INSERT INTO factura (idFactura, idCliente) VALUES (?,?)";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setInt(1, factura.getIdFactura());
             stmt.setInt(2, factura.getIdCliente());
             stmt.executeUpdate();
+            connection.commit();
+            ConnectionFactory.instance().disconnect();
         }
         catch(SQLException e){
             e.printStackTrace();

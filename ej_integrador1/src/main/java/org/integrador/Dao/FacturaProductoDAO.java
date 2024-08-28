@@ -15,5 +15,6 @@ public interface FacturaProductoDAO {
 
     public Factura_producto buscar_por_nombre(String nombre);
 
+    public Factura_producto producto_que_mas_recaudo();
     public List<Factura_producto> listar();
 }
