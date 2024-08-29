@@ -10,11 +10,12 @@ import java.util.List;
 
 public class FacturaDAOImplMySql implements FacturaDAO{
 
-    public static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+    
 
     @Override
     public  void crear_tabla(){
         try {
+        	Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
             String table= "CREATE TABLE Factura (idFactura INT, idCliente INT, PRIMARY KEY (idFactura), FOREIGN KEY(idCliente) REFERENCES cliente (idCliente))";
             connection.prepareStatement(table).execute();
             connection.commit();
@@ -28,9 +29,9 @@ public class FacturaDAOImplMySql implements FacturaDAO{
     public void insertar(Factura factura) {
 
         try{
-        	connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+        	Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
             String sql = "INSERT INTO factura (idFactura, idCliente) VALUES (?,?)";
-            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setInt(1, factura.getIdFactura());
             stmt.setInt(2, factura.getIdCliente());
             stmt.executeUpdate();

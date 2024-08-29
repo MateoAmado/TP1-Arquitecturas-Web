@@ -10,11 +10,12 @@ import java.util.List;
 
 public class ProductoDAOImplMySql implements ProductoDAO{
 
-	public static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+	
 
     @Override
     public void crear_tabla() {
     	try {
+    		Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
 			String table= "CREATE TABLE producto (idProducto int , nombre varchar(45), valor float,PRIMARY KEY (idProducto))";
 			connection.prepareStatement(table).execute();
 			connection.commit();
@@ -27,9 +28,9 @@ public class ProductoDAOImplMySql implements ProductoDAO{
     @Override
     public void insertar(Producto producto) {
     	   try{
-    		   connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+    		   Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
     		   String sql = "INSERT INTO producto (idProducto, nombre, valor) VALUES (?,?,?)";
-    		   PreparedStatement stmt = this.connection.prepareStatement(sql);
+    		   PreparedStatement stmt = connection.prepareStatement(sql);
     	          stmt.setInt(1, producto.getIdProducto());
     	          stmt.setString(2, producto.getNombre());
     	          stmt.setFloat(3, producto.getValor());

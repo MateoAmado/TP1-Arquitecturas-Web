@@ -13,25 +13,25 @@ import java.util.List;
 public class Main {
     private static CsvReader lectorcsv=new CsvReader();
     private static DAOFactory dao_factory = DAOFactory.getInstance();
-    private static ClienteDAO Cliente =(ClienteDAO) dao_factory.getDAO(DAOFactory.CLIENTE, ConnectionFactory.MYSQL);
-    private static FacturaProductoDAO ProductoFactura=(FacturaProductoDAO) dao_factory.getDAO(DAOFactory.FACTURA_PRODUCTO, ConnectionFactory.MYSQL);
-    private static ProductoDAO Producto = (ProductoDAO) dao_factory.getDAO(DAOFactory.PRODUCTO ,ConnectionFactory.MYSQL);
-    private static FacturaDAO Factura=(FacturaDAO) DAOFactory.getInstance().getDAO(DAOFactory.FACTURA ,ConnectionFactory.MYSQL);
+    private static ClienteDAO Cliente =(ClienteDAO) dao_factory.getDAO(DAOFactory.CLIENTE, ConnectionFactory.DERBY);
+    private static FacturaProductoDAO ProductoFactura=(FacturaProductoDAO) dao_factory.getDAO(DAOFactory.FACTURA_PRODUCTO, ConnectionFactory.DERBY);
+    private static ProductoDAO Producto = (ProductoDAO) dao_factory.getDAO(DAOFactory.PRODUCTO ,ConnectionFactory.DERBY);
+    private static FacturaDAO Factura=(FacturaDAO) DAOFactory.getInstance().getDAO(DAOFactory.FACTURA ,ConnectionFactory.DERBY);
 
     public static void main(String[] args) {
         lectorcsv.readCsvProductos();
         
-        //Cliente.crear_tabla();
-        //Factura.crear_tabla();
-        //Producto.crear_tabla();
-        //ProductoFactura.crear_tabla();
+        Cliente.crear_tabla();
+        Factura.crear_tabla();
+        Producto.crear_tabla();
+        ProductoFactura.crear_tabla();
         
-        //insertarCliente();
-        //insertarFactura();
-        //insertarProducto();
-        //insertarProductoFactura();
-        //imprimirClientesPorFacturacion();
-        //mejorProducto();
+        insertarCliente();
+        insertarFactura();
+        insertarProducto();
+        insertarProductoFactura();
+        imprimirClientesPorFacturacion();
+        mejorProducto();
         
         
        

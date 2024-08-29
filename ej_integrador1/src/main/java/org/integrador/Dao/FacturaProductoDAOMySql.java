@@ -11,12 +11,13 @@ import java.util.List;
 
 public class FacturaProductoDAOMySql implements FacturaProductoDAO {
 	
-	public static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+
 
 
     @Override
     public void crear_tabla() {
     	try {
+    		Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
     		String table = "CREATE TABLE factura_producto ("
     		           + "idFactura INT, "
     		           + "idProducto INT, "
@@ -36,9 +37,9 @@ public class FacturaProductoDAOMySql implements FacturaProductoDAO {
     @Override
     public void insertar(Factura_producto facturaProducto) {
     	   try{
-    		   connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+    		   Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
     		   String sql = "INSERT INTO factura_producto (idFactura, idProducto, cantidad) VALUES (?,?,?)";
-    		   PreparedStatement stmt = this.connection.prepareStatement(sql);
+    		   PreparedStatement stmt = connection.prepareStatement(sql);
     	          stmt.setInt(1, facturaProducto.getIdFactura());
     	          stmt.setInt(2, facturaProducto.getIdProducto());
     	          stmt.setInt(3, facturaProducto.getCantidad());
@@ -53,7 +54,7 @@ public class FacturaProductoDAOMySql implements FacturaProductoDAO {
     
     public Factura_producto producto_que_mas_recaudo() {
     	try {
-    		connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+    		Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
     		String sql = "SELECT cantidad,idFactura,fp.idProducto,p.valor, SUM(cantidad*p.valor) AS total_Cantidad"
     				+ " FROM factura_producto fp"
     				+ " JOIN producto p ON p.idProducto = fp.idProducto"

@@ -11,13 +11,14 @@ import org.integrador.Modelo.Cliente;
 import org.integrador.Util.ConnectionFactory;
 
 public class ClienteDAOImplDerby implements ClienteDAO {
-	public static Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+	
 	
 	
 	
     @Override
     public void crear_tabla() {
     	try {
+    		Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
 			String table= "CREATE TABLE cliente (idCliente int, nombre varchar(500), email varchar(150), PRIMARY KEY(idCliente))";
 			connection.prepareStatement(table).execute();
 			connection.commit();
@@ -35,7 +36,7 @@ public class ClienteDAOImplDerby implements ClienteDAO {
         }
 
             try {
-            	connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+            	Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
             	String sql = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
             	PreparedStatement stmt = connection.prepareStatement(sql);
                 stmt.setInt(1, cliente.getIdCliente());
@@ -64,7 +65,7 @@ public class ClienteDAOImplDerby implements ClienteDAO {
     public ArrayList<Cliente> clientes_por_facturacion() {
     	ArrayList<Cliente> clientes = new ArrayList();
     	try {
-
+    		Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
     		String sql = "SELECT c.idCliente, c.nombre, c.email, SUM(p.valor * fp.cantidad) AS total_facturado"
     				+ " FROM cliente c JOIN factura f ON c.idCliente = f.idCliente JOIN factura_producto fp "
     				+ "ON f.idFactura = fp.idFactura JOIN producto p ON fp.idProducto = p.idProducto"
