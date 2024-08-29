@@ -53,12 +53,13 @@ public class FacturaProductoDAOMySql implements FacturaProductoDAO {
     
     public Factura_producto producto_que_mas_recaudo() {
     	try {
+    		connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
     		String sql = "SELECT cantidad,idFactura,fp.idProducto,p.valor, SUM(cantidad*p.valor) AS total_Cantidad"
     				+ " FROM factura_producto fp"
     				+ " JOIN producto p ON p.idProducto = fp.idProducto"
     				+ " GROUP BY fp.idProducto"
     				+ " ORDER BY total_Cantidad DESC"
-    				+ " LIMIT 1;";
+    				+ " LIMIT 1";
     		PreparedStatement stmt = connection.prepareStatement(sql);
     		ResultSet rs = stmt.executeQuery();
     		if(rs.next()) {
@@ -68,6 +69,7 @@ public class FacturaProductoDAOMySql implements FacturaProductoDAO {
     			int totalRecaudo=rs.getInt("total_Cantidad");
     			return new Factura_producto(IdFactura, idProducto, cantidad, totalRecaudo);
     		}
+    		ConnectionFactory.instance().disconnect();
     	}
     	catch(SQLException e) {
     		e.printStackTrace();

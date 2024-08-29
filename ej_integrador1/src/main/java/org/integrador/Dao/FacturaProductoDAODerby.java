@@ -52,12 +52,17 @@ public class FacturaProductoDAODerby implements FacturaProductoDAO{
     
     public Factura_producto producto_que_mas_recaudo() {
     	try {
-    		String sql = "SELECT fp.cantidad,idFactura,fp.idProducto,p.valor, SUM(cantidad*p.valor) AS total_Cantidad"
-    				+ " FROM factura_producto fp"
-    				+ " JOIN producto p ON p.idProducto = fp.idProducto"
-    				+ " GROUP BY fp.idProducto"
-    				+ " ORDER BY total_Cantidad DESC"
-    				+ " fetch first 1 rows only";
+    		String sql = "SELECT fp.cantidad, idFactura, fp.idProducto, p.valor, total_Cantidad "
+  		           + "FROM ("
+  		           + "    SELECT fp.idProducto, SUM(fp.cantidad * p.valor) AS total_Cantidad "
+  		           + "    FROM factura_producto fp "
+  		           + "    JOIN producto p ON p.idProducto = fp.idProducto "
+  		           + "    GROUP BY fp.idProducto"
+  		           + ") AS subquery "
+  		           + "JOIN factura_producto fp ON fp.idProducto = subquery.idProducto "
+  		           + "JOIN producto p ON p.idProducto = fp.idProducto "
+  		           + "ORDER BY subquery.total_Cantidad DESC "
+  		           + "FETCH FIRST 1 ROWS ONLY";
     		PreparedStatement stmt = connection.prepareStatement(sql);
     		ResultSet rs = stmt.executeQuery();
     		if(rs.next()) {

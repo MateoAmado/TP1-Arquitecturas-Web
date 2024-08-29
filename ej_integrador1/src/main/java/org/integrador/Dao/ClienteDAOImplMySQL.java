@@ -67,6 +67,7 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
     public ArrayList<Cliente> clientes_por_facturacion() {
     	ArrayList<Cliente> clientes = new ArrayList();
     	try {
+    		connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
     		String sql = "SELECT c.idCliente, c.nombre, c.email, SUM(p.valor * fp.cantidad) AS total_facturado"
     				+ " FROM cliente c JOIN factura f ON c.idCliente = f.idCliente JOIN factura_producto fp "
     				+ "ON f.idFactura = fp.idFactura JOIN producto p ON fp.idProducto = p.idProducto"
@@ -81,6 +82,7 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
     			Cliente cliente = new Cliente(idCliente, nombre, email);
     			clientes.add(cliente);
     		}
+    		 ConnectionFactory.instance().disconnect();
     	}catch(SQLException e) {
     		e.printStackTrace();
     	}

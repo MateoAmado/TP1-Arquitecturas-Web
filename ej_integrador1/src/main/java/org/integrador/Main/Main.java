@@ -13,38 +13,40 @@ import java.util.List;
 public class Main {
     private static CsvReader lectorcsv=new CsvReader();
     private static DAOFactory dao_factory = DAOFactory.getInstance();
-    private static ClienteDAO mysqlCliente =dao_factory.getClienteDAO(ConnectionFactory.MYSQL);
-    private static FacturaProductoDAO mysqlProductoFactura=dao_factory.getFacturaProductoDAO(ConnectionFactory.MYSQL);
-    private static ProductoDAO mysqlProducto = dao_factory.getProductoDAO(ConnectionFactory.MYSQL);
-    private static FacturaDAO mysqlFactura=DAOFactory.getInstance().getFacturaDAO(ConnectionFactory.MYSQL);
+    private static ClienteDAO Cliente =(ClienteDAO) dao_factory.getDAO(DAOFactory.CLIENTE, ConnectionFactory.MYSQL);
+    private static FacturaProductoDAO ProductoFactura=(FacturaProductoDAO) dao_factory.getDAO(DAOFactory.FACTURA_PRODUCTO, ConnectionFactory.MYSQL);
+    private static ProductoDAO Producto = (ProductoDAO) dao_factory.getDAO(DAOFactory.PRODUCTO ,ConnectionFactory.MYSQL);
+    private static FacturaDAO Factura=(FacturaDAO) DAOFactory.getInstance().getDAO(DAOFactory.FACTURA ,ConnectionFactory.MYSQL);
 
     public static void main(String[] args) {
         lectorcsv.readCsvProductos();
+        
+        //Cliente.crear_tabla();
+        //Factura.crear_tabla();
+        //Producto.crear_tabla();
+        //ProductoFactura.crear_tabla();
+        
+        //insertarCliente();
+        //insertarFactura();
+        //insertarProducto();
+        //insertarProductoFactura();
+        //imprimirClientesPorFacturacion();
+        //mejorProducto();
+        
+        
+       
+       // mejorProducto();
        //dao_factory.getFacturaDAO(ConnectionFactory.MYSQL).crear_tabla();
        //dao_factory.getFacturaProductoDAO(ConnectionFactory.MYSQL).crear_tabla();
 
-      ClienteDAO clienteDerby = dao_factory.getClienteDAO(ConnectionFactory.DERBY);
-       dao_factory.getClienteDAO(ConnectionFactory.DERBY).crear_tabla();
-       System.out.println("clienteDerby:");
-       List<Cliente> clentes = lectorcsv.readCsvClientes();
-       for(Cliente cliente:clentes) {
-    	   clienteDerby.insertar(cliente);
-       }
-       
-       FacturaDAO facturaDerby = dao_factory.getFacturaDAO(ConnectionFactory.DERBY);
-       dao_factory.getFacturaDAO(ConnectionFactory.DERBY).crear_tabla();
-       
-       List<Factura> facturas = lectorcsv.readCsvFacturas();
-       for(Factura factura:facturas) {
-    	   facturaDerby.insertar(factura);
-       }
+     
     }
 
     public static void insertarCliente(){
         List<Cliente> clientes=lectorcsv.readCsvClientes();
         System.out.println(clientes.size());
         for(Cliente cliente:clientes){
-            mysqlCliente.insertar(cliente);
+            Cliente.insertar(cliente);
         }
     }
 
@@ -52,14 +54,14 @@ public class Main {
         List<Factura> facturas=lectorcsv.readCsvFacturas();
         System.out.println(facturas.size());
         for(Factura factura:facturas){
-            mysqlFactura.insertar(factura);
+            Factura.insertar(factura);
         }
     }
 
     public static void insertarProducto(){
         List<Producto> productos = lectorcsv.readCsvProductos();
         for(Producto p:productos) {
-            mysqlProducto.insertar(p);
+            Producto.insertar(p);
         }
     }
 
@@ -67,15 +69,21 @@ public class Main {
         List<Factura_producto> fp=lectorcsv.readCsvFacturasProductos();
         System.out.println("hola");
         for(Factura_producto fp1:fp){
-            mysqlProductoFactura.insertar(fp1);
+            ProductoFactura.insertar(fp1);
         }
     }
 
     public static void imprimirClientesPorFacturacion(){
         System.out.print("Clientes por facturacion");
-        List<Cliente> clientes_f=mysqlCliente.clientes_por_facturacion();
+        List<Cliente> clientes_f=Cliente.clientes_por_facturacion();
         for(Cliente cliente:clientes_f){
             System.out.println(cliente.ToString());
         }
+    }
+    
+    public static void mejorProducto() {
+    	System.out.println("Producto que mas recaudo");
+    	Factura_producto p = ProductoFactura.producto_que_mas_recaudo();
+    	System.out.println(p);
     }
 }
