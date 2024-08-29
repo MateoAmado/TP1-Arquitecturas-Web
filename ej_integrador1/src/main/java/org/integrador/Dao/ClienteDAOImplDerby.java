@@ -64,13 +64,15 @@ public class ClienteDAOImplDerby implements ClienteDAO {
     public ArrayList<Cliente> clientes_por_facturacion() {
     	ArrayList<Cliente> clientes = new ArrayList();
     	try {
+
     		String sql = "SELECT c.idCliente, c.nombre, c.email, SUM(p.valor * fp.cantidad) AS total_facturado"
     				+ " FROM cliente c JOIN factura f ON c.idCliente = f.idCliente JOIN factura_producto fp "
     				+ "ON f.idFactura = fp.idFactura JOIN producto p ON fp.idProducto = p.idProducto"
-    				+ " GROUP BY c.idCliente, c.nombre, c.email ORDER BY total_facturado DESC;";
+    				+ " GROUP BY c.idCliente, c.nombre, c.email ORDER BY total_facturado DESC";
     		
     		PreparedStatement stmt = connection.prepareStatement(sql);
     		ResultSet rs = stmt.executeQuery();
+    		
     		while(rs.next()) {
     			int idCliente = rs.getInt("idCliente");
     			String nombre = rs.getString("nombre");
@@ -78,6 +80,7 @@ public class ClienteDAOImplDerby implements ClienteDAO {
     			Cliente cliente = new Cliente(idCliente, nombre, email);
     			clientes.add(cliente);
     		}
+    		ConnectionFactory.instance().disconnect();
     	}catch(SQLException e) {
     		e.printStackTrace();
     	}

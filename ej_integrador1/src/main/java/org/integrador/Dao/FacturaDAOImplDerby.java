@@ -16,7 +16,6 @@ public class FacturaDAOImplDerby implements FacturaDAO{
         try {
             String table= "CREATE TABLE Factura (idFactura INT, idCliente INT, PRIMARY KEY (idFactura), FOREIGN KEY(idCliente) REFERENCES cliente (idCliente))";
             connection.prepareStatement(table).execute();
-            connection.commit();
             ConnectionFactory.instance().disconnect();
         }catch(SQLException e) {
             e.printStackTrace();

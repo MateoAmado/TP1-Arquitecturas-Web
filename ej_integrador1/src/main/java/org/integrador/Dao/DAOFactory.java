@@ -51,7 +51,7 @@ public class DAOFactory {
             return new ProductoDAOImplMySql();
         }
         if (type.equals(ConnectionFactory.DERBY)) {
-            return new ProductoDAOImplMySql();
+            return new ProductoDAOImplDerby();
         }
 
         throw new IllegalArgumentException("Tipo de DAO no válido: " + type);

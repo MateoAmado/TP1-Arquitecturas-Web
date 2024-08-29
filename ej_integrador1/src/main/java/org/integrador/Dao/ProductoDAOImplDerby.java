@@ -17,7 +17,6 @@ public class ProductoDAOImplDerby implements ProductoDAO{
     	try {
 			String table= "CREATE TABLE producto (idProducto int , nombre varchar(45), valor float,PRIMARY KEY (idProducto))";
 			connection.prepareStatement(table).execute();
-			connection.commit();
 			ConnectionFactory.instance().disconnect();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -27,13 +26,14 @@ public class ProductoDAOImplDerby implements ProductoDAO{
     @Override
     public void insertar(Producto producto) {
     	   try{
+    		   connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
     		   String sql = "INSERT INTO producto (idProducto, nombre, valor) VALUES (?,?,?)";
     		   PreparedStatement stmt = this.connection.prepareStatement(sql);
     	          stmt.setInt(1, producto.getIdProducto());
     	          stmt.setString(2, producto.getNombre());
     	          stmt.setFloat(3, producto.getValor());
     	          stmt.executeUpdate();
-    	          connection.commit();
+    	          ConnectionFactory.instance().disconnect();
     	}
     	   catch(SQLException e){
     	          e.printStackTrace();

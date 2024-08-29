@@ -25,9 +25,8 @@ public class FacturaProductoDAODerby implements FacturaProductoDAO{
     		           + "PRIMARY KEY (idFactura, idProducto), "
     		           + "FOREIGN KEY (idProducto) REFERENCES producto(idProducto), "
     		           + "FOREIGN KEY (idFactura) REFERENCES factura(IdFactura)"
-    		           + ");";
+    		           + ")";
 			connection.prepareStatement(table).execute();
-			connection.commit();
 			ConnectionFactory.instance().disconnect();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -37,13 +36,14 @@ public class FacturaProductoDAODerby implements FacturaProductoDAO{
     @Override
     public void insertar(Factura_producto facturaProducto) {
     	   try{
+    		   connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
     		   String sql = "INSERT INTO factura_producto (idFactura, idProducto, cantidad) VALUES (?,?,?)";
     		   PreparedStatement stmt = this.connection.prepareStatement(sql);
     	          stmt.setInt(1, facturaProducto.getIdFactura());
     	          stmt.setInt(2, facturaProducto.getIdProducto());
     	          stmt.setInt(3, facturaProducto.getCantidad());
     	          stmt.executeUpdate();
-    	          connection.commit();
+    	          ConnectionFactory.instance().disconnect();
     	}
     	   catch(SQLException e){
     	          e.printStackTrace();
@@ -52,12 +52,12 @@ public class FacturaProductoDAODerby implements FacturaProductoDAO{
     
     public Factura_producto producto_que_mas_recaudo() {
     	try {
-    		String sql = "SELECT cantidad,idFactura,fp.idProducto,p.valor, SUM(cantidad*p.valor) AS total_Cantidad"
+    		String sql = "SELECT fp.cantidad,idFactura,fp.idProducto,p.valor, SUM(cantidad*p.valor) AS total_Cantidad"
     				+ " FROM factura_producto fp"
     				+ " JOIN producto p ON p.idProducto = fp.idProducto"
     				+ " GROUP BY fp.idProducto"
     				+ " ORDER BY total_Cantidad DESC"
-    				+ " LIMIT 1;";
+    				+ " fetch first 1 rows only";
     		PreparedStatement stmt = connection.prepareStatement(sql);
     		ResultSet rs = stmt.executeQuery();
     		if(rs.next()) {
