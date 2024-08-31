@@ -30,23 +30,32 @@ public class ClienteDAOImplDerby implements ClienteDAO {
 
 
     @Override
-    public void insertar(Cliente cliente) {
-    	if (cliente == null) {
-            throw new IllegalArgumentException("El cliente no puede ser null");
-        }
+    public void insertar(List<Cliente> clientes) {
+		int i=0;
+		if (clientes == null) {
+			throw new IllegalArgumentException("El cliente no puede ser null");
+		}
+		try {
+			Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+			String sql = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			for(Cliente cliente: clientes) {
+				stmt.setInt(1, cliente.getIdCliente());
+				stmt.setString(2, cliente.getNombre());
+				stmt.setString(3, cliente.getEmail());
+				stmt.addBatch();
+				i++;
+				if(i % 100 == 0){
+					stmt.executeBatch();
+				}
 
-            try {
-            	Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
-            	String sql = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
-            	PreparedStatement stmt = connection.prepareStatement(sql);
-                stmt.setInt(1, cliente.getIdCliente());
-                stmt.setString(2, cliente.getNombre());
-                stmt.setString(3, cliente.getEmail());
-                stmt.executeUpdate();
-                ConnectionFactory.instance().disconnect();
-        } catch (SQLException e) {
-            System.err.println("Error al insertar el cliente: " + e.getMessage());
-        }
+			}
+			stmt.executeBatch();
+			connection.commit();
+			ConnectionFactory.instance().disconnect();
+		} catch (SQLException e) {
+			System.err.println("Error al insertar el cliente: " + e.getMessage());
+		}
     }
 
 

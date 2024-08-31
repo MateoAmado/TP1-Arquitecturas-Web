@@ -35,20 +35,30 @@ public class FacturaProductoDAODerby implements FacturaProductoDAO{
     }
 
     @Override
-    public void insertar(Factura_producto facturaProducto) {
-    	   try{
-    		   Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
-    		   String sql = "INSERT INTO factura_producto (idFactura, idProducto, cantidad) VALUES (?,?,?)";
-    		   PreparedStatement stmt = connection.prepareStatement(sql);
-    	          stmt.setInt(1, facturaProducto.getIdFactura());
-    	          stmt.setInt(2, facturaProducto.getIdProducto());
-    	          stmt.setInt(3, facturaProducto.getCantidad());
-    	          stmt.executeUpdate();
-    	          ConnectionFactory.instance().disconnect();
-    	}
-    	   catch(SQLException e){
-    	          e.printStackTrace();
-    	    }
+    public void insertar(List<Factura_producto> facturaProductos) {
+		int i = 0;
+		try{
+			Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+			String sql = "INSERT INTO factura_producto (idFactura, idProducto, cantidad) VALUES (?,?,?)";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			for(Factura_producto facturaProducto: facturaProductos) {
+				stmt.setInt(1, facturaProducto.getIdFactura());
+				stmt.setInt(2, facturaProducto.getIdProducto());
+				stmt.setInt(3, facturaProducto.getCantidad());
+				stmt.addBatch();
+				i++;
+				if(i % 100 == 0){
+					stmt.executeBatch();
+				}
+
+			}
+			stmt.executeBatch();
+			connection.commit();
+			ConnectionFactory.instance().disconnect();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
     }
     
     public Factura_producto producto_que_mas_recaudo() {

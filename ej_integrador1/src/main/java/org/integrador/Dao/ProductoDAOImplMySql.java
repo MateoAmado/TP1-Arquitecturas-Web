@@ -26,21 +26,30 @@ public class ProductoDAOImplMySql implements ProductoDAO{
 	}
 
     @Override
-    public void insertar(Producto producto) {
-    	   try{
-    		   Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
-    		   String sql = "INSERT INTO producto (idProducto, nombre, valor) VALUES (?,?,?)";
-    		   PreparedStatement stmt = connection.prepareStatement(sql);
-    	          stmt.setInt(1, producto.getIdProducto());
-    	          stmt.setString(2, producto.getNombre());
-    	          stmt.setFloat(3, producto.getValor());
-    	          stmt.executeUpdate();
-    	          connection.commit();
-    	          ConnectionFactory.instance().disconnect();
-    	}
-    	   catch(SQLException e){
-    	          e.printStackTrace();
-    	    }
+    public void insertar(List<Producto> productos) {
+		try{
+			int i = 0;
+			Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
+			String sql = "INSERT INTO producto (idProducto, nombre, valor) VALUES (?,?,?)";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			for(Producto producto: productos) {
+				stmt.setInt(1, producto.getIdProducto());
+				stmt.setString(2, producto.getNombre());
+				stmt.setFloat(3, producto.getValor());
+				stmt.addBatch();
+				i++;
+				if(i % 100 == 0){
+					stmt.executeBatch();
+				}
+
+			}
+			stmt.executeBatch();
+			connection.commit();
+			ConnectionFactory.instance().disconnect();
+		}
+		catch(SQLException e){
+			e.printStackTrace();
+		}
 
     }
 

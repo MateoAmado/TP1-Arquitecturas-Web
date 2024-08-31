@@ -35,15 +35,25 @@ public class FacturaProductoDAOMySql implements FacturaProductoDAO {
     }
 
     @Override
-    public void insertar(Factura_producto facturaProducto) {
+    public void insertar(List<Factura_producto> facturaProductos) {
+		int i=0;
     	   try{
     		   Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
     		   String sql = "INSERT INTO factura_producto (idFactura, idProducto, cantidad) VALUES (?,?,?)";
     		   PreparedStatement stmt = connection.prepareStatement(sql);
-    	          stmt.setInt(1, facturaProducto.getIdFactura());
-    	          stmt.setInt(2, facturaProducto.getIdProducto());
-    	          stmt.setInt(3, facturaProducto.getCantidad());
-    	          stmt.executeUpdate();
+			   for(Factura_producto facturaProducto: facturaProductos) {
+				   stmt.setInt(1, facturaProducto.getIdFactura());
+				   stmt.setInt(2, facturaProducto.getIdProducto());
+				   stmt.setInt(3, facturaProducto.getCantidad());
+				   stmt.addBatch();
+				   i++;
+
+				   if(i % 100 == 0){
+					   stmt.executeBatch();
+				   }
+
+			   }
+			      stmt.executeBatch();
     	          connection.commit();
     	          ConnectionFactory.instance().disconnect();
     	}

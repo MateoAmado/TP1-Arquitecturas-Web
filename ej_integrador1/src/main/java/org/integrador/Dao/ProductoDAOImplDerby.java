@@ -25,15 +25,24 @@ public class ProductoDAOImplDerby implements ProductoDAO{
 	}
 
     @Override
-    public void insertar(Producto producto) {
+    public void insertar(List<Producto> productos) {
+		int i = 0;
     	   try{
     		   Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
     		   String sql = "INSERT INTO producto (idProducto, nombre, valor) VALUES (?,?,?)";
     		   PreparedStatement stmt = connection.prepareStatement(sql);
-    	          stmt.setInt(1, producto.getIdProducto());
-    	          stmt.setString(2, producto.getNombre());
-    	          stmt.setFloat(3, producto.getValor());
-    	          stmt.executeUpdate();
+			   for(Producto producto: productos) {
+				   stmt.setInt(1, producto.getIdProducto());
+				   stmt.setString(2, producto.getNombre());
+				   stmt.setFloat(3, producto.getValor());
+				   stmt.addBatch();
+				   i++;
+				   if(i % 100 == 0){
+					   stmt.executeBatch();
+				   }
+
+			   }
+			      stmt.executeBatch();
     	          ConnectionFactory.instance().disconnect();
     	}
     	   catch(SQLException e){

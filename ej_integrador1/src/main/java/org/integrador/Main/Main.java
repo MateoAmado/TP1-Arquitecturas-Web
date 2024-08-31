@@ -44,32 +44,27 @@ public class Main {
 
     public static void insertarCliente(){
         List<Cliente> clientes=lectorcsv.readCsvClientes();
-        System.out.println(clientes.size());
-        for(Cliente cliente:clientes){
-            Cliente.insertar(cliente);
-        }
+            Cliente.insertar(clientes);
+        
     }
 
     public static void insertarFactura(){
         List<Factura> facturas=lectorcsv.readCsvFacturas();
-        System.out.println(facturas.size());
-        for(Factura factura:facturas){
-            Factura.insertar(factura);
-        }
+            Factura.insertar(facturas);
+
     }
 
     public static void insertarProducto(){
         List<Producto> productos = lectorcsv.readCsvProductos();
-        for(Producto p:productos) {
-            Producto.insertar(p);
-        }
+
+            Producto.insertar(productos);
+
     }
 
     public static void insertarProductoFactura(){
         List<Factura_producto> fp=lectorcsv.readCsvFacturasProductos();
-        for(Factura_producto fp1:fp){
-            ProductoFactura.insertar(fp1);
-        }
+            ProductoFactura.insertar(fp);
+
     }
 
     public static void imprimirClientesPorFacturacion(){

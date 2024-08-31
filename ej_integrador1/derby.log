@@ -1,10 +1,10 @@
 ----------------------------------------------------------------
-Thu Aug 29 17:29:40 ART 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0191-9fd4-5c07-00000f600000 
-on database directory C:\Users\Usuario\Desktop\TP1\ej_integrador1\MyDerbyDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@51521cc1 
+Sat Aug 31 15:58:40 ART 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.15.2.0 - (1873585): instance a816c00e-0191-a9cd-c30a-00000f4fd860 
+on database directory C:\Users\Usuario\Desktop\TP1\ej_integrador1\MyDerbyDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@76ed5528 
 Loaded from file:/C:/Users/Usuario/.m2/repository/org/apache/derby/derby/10.15.2.0/derby-10.15.2.0.jar
-java.vendor=Eclipse Adoptium
-java.runtime.version=22.0.2+9
+java.vendor=Oracle Corporation
+java.runtime.version=22+36-2370
 user.dir=C:\Users\Usuario\Desktop\TP1\ej_integrador1
 os.name=Windows 11
 os.arch=amd64

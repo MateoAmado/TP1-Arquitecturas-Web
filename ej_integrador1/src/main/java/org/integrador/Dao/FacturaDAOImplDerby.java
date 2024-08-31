@@ -24,16 +24,24 @@ public class FacturaDAOImplDerby implements FacturaDAO{
     }
 
     @Override
-    public void insertar(Factura factura) {
-
+    public void insertar(List<Factura> facturas) {
+      int i = 0;
         try{
-        	Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
+            Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.DERBY);
             String sql = "INSERT INTO factura (idFactura, idCliente) VALUES (?,?)";
             PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setInt(1, factura.getIdFactura());
-            stmt.setInt(2, factura.getIdCliente());
-            stmt.executeUpdate();
-            
+            for(Factura factura: facturas) {
+                stmt.setInt(1, factura.getIdFactura());
+                stmt.setInt(2, factura.getIdCliente());
+                stmt.addBatch();
+                i++;
+                if(i % 100 == 0){
+                    stmt.executeBatch();
+                }
+
+            }
+            stmt.executeBatch();
+            connection.commit();
             ConnectionFactory.instance().disconnect();
         }
         catch(SQLException e){

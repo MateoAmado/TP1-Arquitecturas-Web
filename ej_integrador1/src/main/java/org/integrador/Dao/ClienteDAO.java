@@ -8,7 +8,7 @@ import java.util.List;
 public interface ClienteDAO {
     public void crear_tabla();
 
-    public void insertar(Cliente cliente);
+    public void insertar(List<Cliente> clientes);
 
     public void actualizar(Cliente cliente);
 

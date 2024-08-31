@@ -7,7 +7,7 @@ import java.util.List;
 public interface ProductoDAO {
     public void crear_tabla();
 
-    public void insertar(Producto producto);
+    public void insertar(List<Producto> producto);
 
     public void actualizar(Producto producto);
 
