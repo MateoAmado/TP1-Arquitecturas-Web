@@ -20,7 +20,6 @@ public class Main {
 
     public static void main(String[] args) {
         lectorcsv.readCsvProductos();
-        
         Cliente.crear_tabla();
         Factura.crear_tabla();
         Producto.crear_tabla();

@@ -16,7 +16,7 @@ public class FacturaDAOImplMySql implements FacturaDAO{
     public  void crear_tabla(){
         try {
         	Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
-            String table= "CREATE TABLE Factura (idFactura INT, idCliente INT, PRIMARY KEY (idFactura), FOREIGN KEY(idCliente) REFERENCES cliente (idCliente))";
+            String table= "CREATE TABLE factura (idFactura INT, idCliente INT, PRIMARY KEY (idFactura), FOREIGN KEY(idCliente) REFERENCES cliente (idCliente))";
             connection.prepareStatement(table).execute();
             connection.commit();
             ConnectionFactory.instance().disconnect();
