@@ -13,10 +13,10 @@ import java.util.List;
 public class Main {
     private static CsvReader lectorcsv=new CsvReader();
     private static DAOFactory dao_factory = DAOFactory.getInstance();
-    private static ClienteDAO Cliente =(ClienteDAO) dao_factory.getDAO(DAOFactory.CLIENTE, ConnectionFactory.DERBY);
-    private static FacturaProductoDAO ProductoFactura=(FacturaProductoDAO) dao_factory.getDAO(DAOFactory.FACTURA_PRODUCTO, ConnectionFactory.DERBY);
-    private static ProductoDAO Producto = (ProductoDAO) dao_factory.getDAO(DAOFactory.PRODUCTO ,ConnectionFactory.DERBY);
-    private static FacturaDAO Factura=(FacturaDAO) DAOFactory.getInstance().getDAO(DAOFactory.FACTURA ,ConnectionFactory.DERBY);
+    private static ClienteDAO Cliente =(ClienteDAO) dao_factory.getDAO(DAOFactory.CLIENTE, ConnectionFactory.MYSQL);
+    private static FacturaProductoDAO ProductoFactura=(FacturaProductoDAO) dao_factory.getDAO(DAOFactory.FACTURA_PRODUCTO, ConnectionFactory.MYSQL);
+    private static ProductoDAO Producto = (ProductoDAO) dao_factory.getDAO(DAOFactory.PRODUCTO ,ConnectionFactory.MYSQL);
+    private static FacturaDAO Factura=(FacturaDAO) DAOFactory.getInstance().getDAO(DAOFactory.FACTURA ,ConnectionFactory.MYSQL);
 
     public static void main(String[] args) {
         lectorcsv.readCsvProductos();
@@ -67,7 +67,6 @@ public class Main {
 
     public static void insertarProductoFactura(){
         List<Factura_producto> fp=lectorcsv.readCsvFacturasProductos();
-        System.out.println("hola");
         for(Factura_producto fp1:fp){
             ProductoFactura.insertar(fp1);
         }

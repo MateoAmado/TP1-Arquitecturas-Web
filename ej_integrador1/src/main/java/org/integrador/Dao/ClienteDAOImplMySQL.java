@@ -13,10 +13,6 @@ import java.util.List;
 
 public class ClienteDAOImplMySQL implements ClienteDAO {
 
-	
-	
-	
-	
     @Override
     public void crear_tabla() {
     	try {
@@ -36,15 +32,39 @@ public class ClienteDAOImplMySQL implements ClienteDAO {
     	if (cliente == null) {
             throw new IllegalArgumentException("El cliente no puede ser null");
         }
-
             try {
+				/*
+				private static void batchInsert(Connection conn) throws SQLException {
+
+
+            // Suponiendo que tienes una lista de datos
+            for (int i = 1; i <= 1000; i++) {
+                pstmt.setString(1, "valor1_" + i);
+                pstmt.setString(2, "valor2_" + i);
+                pstmt.addBatch();  // Añadir a la lista de operaciones por lote
+
+                // Ejecutar el lote cada 100 operaciones para optimizar el rendimiento
+                if (i % 100 == 0) {
+                    pstmt.executeBatch();
+                }
+            }
+
+            // Ejecutar cualquier operación restante en el lote
+            pstmt.executeBatch();
+        }
+    }
+}
+				 */
             	Connection connection=ConnectionFactory.instance().connect(ConnectionFactory.MYSQL);
             	String sql = "INSERT INTO cliente (idCliente, nombre, email) VALUES (?,?,?)";
-            	PreparedStatement stmt = connection.prepareStatement(sql);
-                stmt.setInt(1, cliente.getIdCliente());
-                stmt.setString(2, cliente.getNombre());
-                stmt.setString(3, cliente.getEmail());
-                stmt.executeUpdate();
+				PreparedStatement stmt = connection.prepareStatement(sql);
+				for (int i = 1; i <= 1000; i++) {
+					stmt.setInt(1, cliente.getIdCliente());
+					stmt.setString(2, cliente.getNombre());
+					stmt.setString(3, cliente.getEmail());
+					stmt.addBatch();
+				}
+				stmt.executeBatch();
                 connection.commit();
                 ConnectionFactory.instance().disconnect();
         } catch (SQLException e) {
