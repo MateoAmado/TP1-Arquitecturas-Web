@@ -1,4 +1,6 @@
 package org.integrador.Dao;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
+import com.mysql.cj.x.protobuf.MysqlxExpr;
 import org.integrador.Util.*;
 
 public class DAOFactory {

@@ -5,10 +5,106 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3b46de2a-9132-411a-8e7a-1bc3c41400a6" name="Changes" comment="Daos">
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/README_DO_NOT_TOUCH_FILES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/db.lck" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/log/README_DO_NOT_TOUCH_FILES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/log/log.ctrl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/log/log2.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/log/logmirror.ctrl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/README_DO_NOT_TOUCH_FILES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c10.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c101.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c111.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c121.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c130.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c141.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c150.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c161.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c171.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c180.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c191.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c1a1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c1b1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c1c0.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c1d1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c1e0.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c1f1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c20.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c200.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c211.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c221.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c230.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c241.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c251.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c260.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c271.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c281.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c290.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c2a1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c2b1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c2c1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c2d0.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c2e1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c2f0.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c300.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c31.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c311.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c321.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c331.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c340.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c351.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c361.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c371.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c380.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c391.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c3a1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c3b1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c3c0.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c3d1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c3e1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c3f1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c400.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c41.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c411.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c421.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c430.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c441.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c451.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c461.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c470.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c481.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c490.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c4a1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c4b0.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c4c1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c4d1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c4e0.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c4f1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c500.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c51.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c511.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c521.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c531.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c60.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c71.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c81.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/c90.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/ca1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/cb1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/cc0.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/cd1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/ce1.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/seg0/cf0.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MyDerbyDB/service.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaDAOImplMySql.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/FacturaDAOImplMySql.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/derby.log" beforeDir="false" afterPath="$PROJECT_DIR$/derby.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/DAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Dao/DAOFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/integrador/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/integrador/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/integrador/Dao/DAOFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/integrador/Dao/DAOFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/integrador/Main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/integrador/Main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/integrador/Util/ConnectionFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/integrador/Util/ConnectionFactory.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,23 +144,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Usuario/Desktop/TP1/ej_integrador1/pom.xml&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/valen/OneDrive/Escritorio/TP1-Arquitecturas-Web/ej_integrador1/pom.xml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.integrador.Dao" />
@@ -103,6 +200,11 @@
       <workItem from="1725127986390" duration="603000" />
       <workItem from="1725129340268" duration="1678000" />
       <workItem from="1725133931096" duration="652000" />
+      <workItem from="1725324611921" duration="128000" />
+      <workItem from="1725324749507" duration="516000" />
+      <workItem from="1725399018297" duration="63000" />
+      <workItem from="1725399088905" duration="5000" />
+      <workItem from="1725399176211" duration="438000" />
     </task>
     <task id="LOCAL-00001" summary="Daos">
       <option name="closed" value="true" />

@@ -19,7 +19,6 @@ public class Main {
     private static FacturaDAO Factura=(FacturaDAO) DAOFactory.getInstance().getDAO(DAOFactory.FACTURA ,ConnectionFactory.MYSQL);
 
     public static void main(String[] args) {
-        lectorcsv.readCsvProductos();
         Cliente.crear_tabla();
         Factura.crear_tabla();
         Producto.crear_tabla();
@@ -31,13 +30,6 @@ public class Main {
         insertarProductoFactura();
         imprimirClientesPorFacturacion();
         mejorProducto();
-        
-        
-       
-       // mejorProducto();
-       //dao_factory.getFacturaDAO(ConnectionFactory.MYSQL).crear_tabla();
-       //dao_factory.getFacturaProductoDAO(ConnectionFactory.MYSQL).crear_tabla();
-
      
     }
 
@@ -67,6 +59,7 @@ public class Main {
     }
 
     public static void imprimirClientesPorFacturacion(){
+
         System.out.print("Clientes por facturacion");
         List<Cliente> clientes_f=Cliente.clientes_por_facturacion();
         for(Cliente cliente:clientes_f){
